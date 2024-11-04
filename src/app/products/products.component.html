@@ -1,0 +1,42 @@
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Shop in style</h1>
+            <img src="/assets/termék.jpg" class="img-fluid" alt="...">
+            <p class="lead fw-normal text-white-50 mb-0"></p>
+            
+        </div>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <table *ngFor="let product of products; let i = index"
+            [class.active]="i == currentIndex">
+                <div class="col mb-5">
+                <div class="card h-100">
+                    
+                    <img class="card-img-top" src="{{product.url}}" alt="..." />
+                    
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                           
+                            <h5 class="fw-bolder"><a routerLink="/products/{{product.id}}">{{product.name}}</a></h5>
+                           
+                            <h6>Ár:{{product.price }}Ft</h6>
+                            <h5>Mennyiség:<input [(ngModel)]="product.amount" [ngModelOptions]="{standalone: true}" min="1" type="number" value="1"
+                            name="" class="form-control w-50" ></h5>
+                           
+                        </div>
+                    </div>
+                   
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" (click)="onAddItem(product)">Kosárhoz</a></div>
+                    </div>
+                </div>
+            </div>
+            </table>  
+        </div>
+    </div>
+</section>

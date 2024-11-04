@@ -1,0 +1,47 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Kor</th>
+                            <th>Szhely</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users; let i = index"
+                        [class.active]="i == currentIndex">
+                            <td>{{i+1}}</td>
+                            <td><input type="text" class="form-control" id="id" [(ngModel)]="user.id" name="id" /></td>
+                            <td><input type="text" class="form-control" id="id" [(ngModel)]="user.name" name="id" /></td>
+                            <td><input type="text" class="form-control" id="id" [(ngModel)]="user.username" name="id" /></td>
+                            <td><input type="text" class="form-control" id="id" [(ngModel)]="user.password" name="id" /></td>
+                            <td><input type="number" class="form-control" id="id" [(ngModel)]="user.age" name="id" /></td>
+                            <td><input type="text" class="form-control" id="id" [(ngModel)]="user.bplace" name="id" /></td>
+                            <td *ngFor="let role of user.roles"><input type="text"  class="form-control" id="id" [(ngModel)]="role.id" name="id" /></td>
+                           
+                            <!--<td><select id="role" name="role" >
+                              <option value="og">{{role.name}}</option>
+                              <option value="admin">admin</option>
+                              <option value="moderator">moderator</option>
+                              <option value="user">user</option>
+                            </select></td>-->
+                            <td> <button class="btn btn-sm btn-danger"  (click)="onDelete(user.id)">Delete</button></td>
+                            <td> <button class="btn btn-sm btn-primary" (click)="updateCurrentUser(user.id,user)">Update</button> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="m-3 btn btn-sm btn-danger" (click)="removeAllusers()">
+                Remove All
+            </button>
+          </div>
+        
+      </div>   
+  </section>

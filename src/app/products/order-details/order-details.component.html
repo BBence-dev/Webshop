@@ -1,0 +1,60 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Payment</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th>Payed</th>
+                    <th>City</th>
+                    <th>Zip</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr> 
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.name" name="name" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.payment" name="payment" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="currentOrders.amount" name="amount" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="currentOrders.price" name="price" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.payed" name="payed" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.city" name="city" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="currentOrders.zip" name="zip" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.state" name="state" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.delivery" name="city" /></td>
+                    <td><input type="date" class="form-control" id="id" [(ngModel)]="currentOrders.ddelivery" name="zip" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.status" name="state" /></td>
+                    <td><button class="btn btn-sm btn-primary" (click)="onCreateOrder()">Creat</button> </td>
+                </tr>
+                <tr *ngFor="let Order of Orders; let i = index"
+                [class.active]="i == currentIndex">
+                    <td>{{i+1}}</td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.id" name="id" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.name" name="name" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.payment" name="payment" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="Order.amount" name="amount" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="Order.price" name="price" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.payed" name="payed" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.city" name="city" /></td>
+                    <td><input type="number" class="form-control" id="id" [(ngModel)]="Order.zip" name="zip" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.state" name="state" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.delivery" name="city" /></td>
+                    <td><input type="date" class="form-control" id="id" [(ngModel)]="Order.ddelivery" name="zip" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.status" name="state" /></td>
+                    <td> <button class="btn btn-sm btn-danger"  (click)="onDeleteOrder(Order.id)">Delete</button></td>
+                    <td> <button class="btn btn-sm btn-primary" (click)="updateOrder(Order.id,Order)">Update</button> </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+</div>
+</div>
+</section>

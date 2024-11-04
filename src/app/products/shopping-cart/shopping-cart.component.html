@@ -1,0 +1,181 @@
+<div class="row" >
+    <div class="col-12" >
+     <form class="row g-3 needs-validation"  *ngIf="!isSuccessful" novalidate (ngSubmit)="f.form.valid && onCreateOrder()" #f="ngForm">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         Termékek
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+           <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                        <th>Kor</th>
+                        <th>Szhely</th>
+                    </tr>
+                </thead>
+                <tbody>
+              <tr *ngFor="let cart of carts; let i=index" >
+                    <td>{{cart.id}}</td>
+                    <td>{{ cart.name }}</td>
+                    <td>{{ cart.price }}</td>
+                    <td><input [(ngModel)]="cart.amount" [ngModelOptions]="{standalone: true}" min="1" type="number" value="1"name="" class="form-control w-25"></td>
+                    <td><button class="btn btn-danger" type="button" (click)="removeProduct(cart)">Delete</button></td>
+                    <span>${{ cart.price * cart.amount| number : '1.2-2'}}</span>
+              </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" *ngIf="isLoggedIn" >
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+         Szállitási adatok
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body hstack gap-3">
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip03" class="form-label">City</label>
+        <input type="text" class="form-control" id="validationTooltip03" 
+        required [(ngModel)]="currentProducts.city"
+        name="city" #city="ngModel" 
+        [ngClass]="{ 'is-invalid': f.submitted && city.errors }">
+      <div class="invalid-tooltip" *ngIf="f.submitted && city.errors">
+        <div *ngIf="city.errors['required']">City is required</div>
+      </div>
+    </div>
+    <div class="col-md-3 position-relative">
+        <label for="validationTooltip04" class="form-label">State</label>
+        <input type="text" 
+        class="form-control" 
+        id="validationTooltip04" 
+        required 
+        [(ngModel)]="currentProducts.state" 
+        name="state" 
+        #state="ngModel" 
+        [ngClass]="{ 'is-invalid': f.submitted && state.errors }">
+      <div class="invalid-tooltip" *ngIf="f.submitted && state.errors">
+        <div *ngIf="state.errors['required']">State is required</div>
+      </div>
+    </div>
+      <div class="col-md-3 position-relative">
+          <label for="validationTooltip05" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="validationTooltip05" 
+          required [(ngModel)]="currentProducts.zip" 
+          name="zip" #zip="ngModel" 
+          [ngClass]="{ 'is-invalid': f.submitted && zip.errors }">
+        <div class="invalid-tooltip" *ngIf="f.submitted && zip.errors">
+          <div *ngIf="zip.errors['required']">Zip is required</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="accordion-item" *ngIf="isLoggedIn">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Fizetés
+        </button>
+      </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <ul class="nav"  >
+          <li class="nav-item h3 font-weight-semibold text-center py-3">{{total | currency}}</li>
+          <li class="nav-item h3 font-weight-semibold text-center py-3"><button type="submit" class="btn btn-primary" >Fizet</button> </li>
+          <p class="nav-item h3 font-weight-semibold text-center py-3">
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Fizető eszköz
+              </button>
+          </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" value="Utánvétel"  required [(ngModel)]="currentProducts.payment">
+                  <label class="form-check-label" for="cashOnDelivery">Utánvétel</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="Kártya" required [(ngModel)]="currentProducts.payment">
+                  <label class="form-check-label" for="creditCard">Kártya</label>
+                </div>
+                  <div *ngIf="currentProducts.payment === 'Kártya'" class="accordion-body hstack gap-3">
+                    <div class="col-md-3 position-relative">
+                      <label for="validationTooltip03" class="form-label">Card Number</label>
+                      <input type="number" class="form-control" id="validationTooltip03" 
+                      required [(ngModel)]="currentProducts.cardn"
+                      name="city" #cardn="ngModel" 
+                      [ngClass]="{ 'is-invalid': f.submitted && cardn.errors }">
+                      <div class="invalid-tooltip" *ngIf="f.submitted && cardn.errors">
+                        <div *ngIf="cardn.errors['required']">Card number is required</div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 position-relative">
+                      <label for="validationTooltip04" class="form-label">Expiration Date</label>
+                      <input type="text" class="form-control" id="validationTooltip04" 
+                      required [(ngModel)]="currentProducts.expd" 
+                      name="state" 
+                      #expd="ngModel" 
+                      [ngClass]="{ 'is-invalid': f.submitted && expd.errors }">
+                      <div class="invalid-tooltip" *ngIf="f.submitted && expd.errors">
+                        <div *ngIf="expd.errors['required']">Expiration date is required</div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 position-relative">
+                      <label for="validationTooltip05" class="form-label">CVV</label>
+                      <input type="text" class="form-control" id="validationTooltip05" 
+                      required [(ngModel)]="currentProducts.cvv" 
+                      name="cvv" #cvv="ngModel" 
+                      [ngClass]="{ 'is-invalid': f.submitted && cvv.errors }">
+                      <div class="invalid-tooltip" *ngIf="f.submitted && cvv.errors">
+                        <div *ngIf="cvv.errors['required']">CVV is required</div>
+                      </div>
+                    </div>
+                  </div>
+                 <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                  Signup failed!<br/>{{ errorMessage }}
+                 </div>
+              </div>
+          </div>
+             <p class="nav-item h3 font-weight-semibold text-center py-3">
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                  Szállitási lehetöség
+                </button>
+            </p>
+              <div class="collapse" id="collapseExample1">
+                <div class="card card-body">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="delivery" id="Delivery" value="MagyarPosta"  required [(ngModel)]="currentProducts.delivery">
+                    <label class="form-check-label" for="cashOnDelivery">MagyarPosta</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="delivery" id="Delivery" value="FoxPosta" required [(ngModel)]="currentProducts.delivery">
+                    <label class="form-check-label" for="creditCard">FoxPost</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="delivery" id="Delivery" value="Gls"  required [(ngModel)]="currentProducts.delivery">
+                    <label class="form-check-label" for="cashOnDelivery">Gls</label>
+                  </div>
+                </div>
+              </div>
+            <li class="nav-item h3 font-weight-semibold text-center py-3"><button type="button" class="btn btn-primary" (click)="clearAllProducts()">Minden</button> 
+          </ul> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+<div class="alert alert-success" *ngIf="isSuccessful">
+  Your order is successful!
+</div>
+</div>
+</div>
+  
