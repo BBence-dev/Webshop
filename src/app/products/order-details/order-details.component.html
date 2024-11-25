@@ -5,22 +5,21 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Sr No</th>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Payment</th>
-                    <th>Amount</th>
-                    <th>Price</th>
-                    <th>Payed</th>
-                    <th>City</th>
+                    <th>Név</th>
+                    <th>Fizetés</th>
+                    <th>Összeg</th>
+                    <th>Ár</th>
+                    <th>Fizetve</th>
+                    <th>Város</th>
                     <th>Zip</th>
-                    <th>State</th>
+                    <th>Állam</th>
+                    <th>Szállitás</th>
+                    <th>Szállitva</th>
+                    <th>Státusz</th>
                 </tr>
             </thead>
             <tbody>
                 <tr> 
-                    <td></td>
-                    <td></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.name" name="name" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.payment" name="payment" /></td>
                     <td><input type="number" class="form-control" id="id" [(ngModel)]="currentOrders.amount" name="amount" /></td>
@@ -32,11 +31,30 @@
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.delivery" name="city" /></td>
                     <td><input type="date" class="form-control" id="id" [(ngModel)]="currentOrders.ddelivery" name="zip" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentOrders.status" name="state" /></td>
-                    <td><button class="btn btn-sm btn-primary" (click)="onCreateOrder()">Creat</button> </td>
+                    <td><button class="btn btn-sm btn-primary" (click)="onCreateOrder()">Felvitel</button> </td>
                 </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Név</th>
+                    <th>Fizetés</th>
+                    <th>Összeg</th>
+                    <th>Ár</th>
+                    <th>Fizetve</th>
+                    <th>Város</th>
+                    <th>Zip</th>
+                    <th>Állam</th>
+                    <th>Szállitás</th>
+                    <th>Szállitva</th>
+                    <th>Státusz</th>
+                </tr>
+            </thead>
+            <tbody>
                 <tr *ngFor="let Order of Orders; let i = index"
                 [class.active]="i == currentIndex">
-                    <td>{{i+1}}</td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.id" name="id" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.name" name="name" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.payment" name="payment" /></td>
@@ -46,14 +64,14 @@
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.city" name="city" /></td>
                     <td><input type="number" class="form-control" id="id" [(ngModel)]="Order.zip" name="zip" /></td>
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.state" name="state" /></td>
-                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.delivery" name="city" /></td>
-                    <td><input type="date" class="form-control" id="id" [(ngModel)]="Order.ddelivery" name="zip" /></td>
-                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.status" name="state" /></td>
-                    <td> <button class="btn btn-sm btn-danger"  (click)="onDeleteOrder(Order.id)">Delete</button></td>
-                    <td> <button class="btn btn-sm btn-primary" (click)="updateOrder(Order.id,Order)">Update</button> </td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.delivery" name="delivery" /></td>
+                    <td><input type="date" class="form-control" id="id" [(ngModel)]="Order.ddelivery" name="ddelivery" /></td>
+                    <td><input type="text" class="form-control" id="id" [(ngModel)]="Order.status" name="status" /></td>
+                    <td> <button class="btn btn-sm btn-danger"  (click)="onDeleteOrder(Order.id)">Töröl</button></td>
+                    <td> <button class="btn btn-sm btn-primary" (click)="updateOrder(Order.id,Order)">Frissítés</button> </td>
                 </tr>
             </tbody>
-        </table>
+        </table> 
 </div>
 </div>
 </div>

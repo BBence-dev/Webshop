@@ -26,21 +26,21 @@
             [(ngModel)]="currentUser.email"
             name="description"
           />  </div>
-          <strong>Roles:</strong>
+          <strong>Szerepek:</strong>
     <ul>
       <li *ngFor="let role of currentUser.roles">
         {{ role }}
       </li>
     </ul>
           <button class="btn btn-danger" (click)="deleteUser()">
-            Delete
+            Töröl
           </button>
           <button
             type="submit"
             class="btn btn-success"
             (click)="updateUser()"
             >
-            Update
+            Frissítés
         </button>
         <p>{{ message }}</p>
         </form>
@@ -50,16 +50,16 @@
         <table class="table table-bordered">
           <thead>
               <tr>
-                  <th>Sr No</th>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Payment</th>
-                  <th>Amount</th>
-                  <th>Price</th>
-                  <th>Payed</th>
-                  <th>City</th>
-                  <th>Zip</th>
-                  <th>State</th>
+                <th>Sr No</th>
+                <th>ID</th>
+                <th>Név</th>
+                <th>Fizetés</th>
+                <th>Összeg</th>
+                <th>Ár</th>
+                <th>Fizetve</th>
+                <th>Város</th>
+                <th>Zip</th>
+                <th>Állam</th>
               </tr>
           </thead>
           <tbody>
@@ -82,7 +82,7 @@
   </div>
   
   <ng-template #loggedOut>
-    Please login.
+    Kérjük, jelentkezzen be.
   </ng-template>
   
   

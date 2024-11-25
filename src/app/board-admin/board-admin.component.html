@@ -7,9 +7,9 @@
                         <tr>
                             <th>Sr No</th>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Password</th>
+                            <th>Név</th>
+                            <th>Felhasználónév</th>
+                            <th>Jelszó</th>
                             <th>Kor</th>
                             <th>Szhely</th>
                         </tr>
@@ -32,14 +32,14 @@
                               <option value="moderator">moderator</option>
                               <option value="user">user</option>
                             </select></td>-->
-                            <td> <button class="btn btn-sm btn-danger"  (click)="onDelete(user.id)">Delete</button></td>
-                            <td> <button class="btn btn-sm btn-primary" (click)="updateCurrentUser(user.id,user)">Update</button> </td>
+                            <td> <button class="btn btn-sm btn-danger"  (click)="onDelete(user.id)">Töröl</button></td>
+                            <td> <button class="btn btn-sm btn-primary" (click)="updateCurrentUser(user.id,user)">Frissités</button> </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <button class="m-3 btn btn-sm btn-danger" (click)="removeAllusers()">
-                Remove All
+                Minden töröl
             </button>
           </div>
         

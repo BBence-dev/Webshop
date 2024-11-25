@@ -7,10 +7,10 @@
                 <tr>
                     <th>Sr No</th>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Picture</th>
-                    <th>Amount</th>
-                    <th>Price</th>
+                    <th>Név</th>
+                    <th>Kép</th>
+                    <th>Darabszám</th>
+                    <th>Ár</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="currentProducts.url" name="id" /></td>
                     <td><input type="number" class="form-control" id="id" [(ngModel)]="currentProducts.amount" name="id" /></td>
                     <td><input type="number" class="form-control" id="id" [(ngModel)]="currentProducts.price" name="id" /></td>
-                    <td><button class="btn btn-sm btn-primary" (click)="onCreateProduct()">Creat</button> </td>
+                    <td><button class="btn btn-sm btn-primary" (click)="onCreateProduct()">Felvitel</button> </td>
                 </tr>
                 <tr *ngFor="let product of products; let i = index"
                 [class.active]="i == currentIndex">
@@ -31,8 +31,8 @@
                     <td><input type="text" class="form-control" id="id" [(ngModel)]="product.url" name="id" /></td>
                     <td><input type="number" class="form-control" id="id" [(ngModel)]="product.amount" name="id" /></td>
                     <td><input type="number" class="form-control" id="id" [(ngModel)]="product.price" name="id" /></td>
-                    <td> <button class="btn btn-sm btn-danger"  (click)="onDeleteProduct(product.id)">Delete</button></td>
-                    <td> <button class="btn btn-sm btn-primary" (click)="updateProduct(product.id,product)">Update</button> </td>
+                    <td> <button class="btn btn-sm btn-danger"  (click)="onDeleteProduct(product.id)">Töröl</button></td>
+                    <td> <button class="btn btn-sm btn-primary" (click)="updateProduct(product.id,product)">Frissítés</button> </td>
                 </tr>
             </tbody>
         </table>

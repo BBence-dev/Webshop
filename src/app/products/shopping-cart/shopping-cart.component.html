@@ -13,12 +13,12 @@
            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Amount</th>
-                        <th>Kor</th>
-                        <th>Szhely</th>
+                      <th>ID</th>
+                      <th>Név</th>
+                      <th>Ár</th>
+                      <th>Összeg</th>
+                      <th>Kor</th>
+                      <th>Szhely</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,7 @@
                     <td>{{ cart.name }}</td>
                     <td>{{ cart.price }}</td>
                     <td><input [(ngModel)]="cart.amount" [ngModelOptions]="{standalone: true}" min="1" type="number" value="1"name="" class="form-control w-25"></td>
-                    <td><button class="btn btn-danger" type="button" (click)="removeProduct(cart)">Delete</button></td>
+                    <td><button class="btn btn-danger" type="button" (click)="removeProduct(cart)">Töröl</button></td>
                     <span>${{ cart.price * cart.amount| number : '1.2-2'}}</span>
               </tr>
                 </tbody>
@@ -44,17 +44,18 @@
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body hstack gap-3">
       <div class="col-md-3 position-relative">
-        <label for="validationTooltip03" class="form-label">City</label>
+        <label for="validationTooltip03" class="form-label">
+          Város</label>
         <input type="text" class="form-control" id="validationTooltip03" 
         required [(ngModel)]="currentProducts.city"
         name="city" #city="ngModel" 
         [ngClass]="{ 'is-invalid': f.submitted && city.errors }">
       <div class="invalid-tooltip" *ngIf="f.submitted && city.errors">
-        <div *ngIf="city.errors['required']">City is required</div>
+        <div *ngIf="city.errors['required']">Város kötelező</div>
       </div>
     </div>
     <div class="col-md-3 position-relative">
-        <label for="validationTooltip04" class="form-label">State</label>
+        <label for="validationTooltip04" class="form-label">Állam</label>
         <input type="text" 
         class="form-control" 
         id="validationTooltip04" 
@@ -64,7 +65,7 @@
         #state="ngModel" 
         [ngClass]="{ 'is-invalid': f.submitted && state.errors }">
       <div class="invalid-tooltip" *ngIf="f.submitted && state.errors">
-        <div *ngIf="state.errors['required']">State is required</div>
+        <div *ngIf="state.errors['required']">Kitöltése kötelezö</div>
       </div>
     </div>
       <div class="col-md-3 position-relative">
@@ -74,7 +75,7 @@
           name="zip" #zip="ngModel" 
           [ngClass]="{ 'is-invalid': f.submitted && zip.errors }">
         <div class="invalid-tooltip" *ngIf="f.submitted && zip.errors">
-          <div *ngIf="zip.errors['required']">Zip is required</div>
+          <div *ngIf="zip.errors['required']">Kitöltése kötelezö</div>
         </div>
       </div>
     </div>
@@ -108,24 +109,25 @@
                 </div>
                   <div *ngIf="currentProducts.payment === 'Kártya'" class="accordion-body hstack gap-3">
                     <div class="col-md-3 position-relative">
-                      <label for="validationTooltip03" class="form-label">Card Number</label>
+                      <label for="validationTooltip03" class="form-label">Kártyaszám</label>
                       <input type="number" class="form-control" id="validationTooltip03" 
                       required [(ngModel)]="currentProducts.cardn"
                       name="city" #cardn="ngModel" 
                       [ngClass]="{ 'is-invalid': f.submitted && cardn.errors }">
                       <div class="invalid-tooltip" *ngIf="f.submitted && cardn.errors">
-                        <div *ngIf="cardn.errors['required']">Card number is required</div>
+                        <div *ngIf="cardn.errors['required']">Kitöltése kötelezö</div>
                       </div>
                     </div>
                     <div class="col-md-3 position-relative">
-                      <label for="validationTooltip04" class="form-label">Expiration Date</label>
+                      <label for="validationTooltip04" class="form-label">
+                        Lejárati idő</label>
                       <input type="text" class="form-control" id="validationTooltip04" 
                       required [(ngModel)]="currentProducts.expd" 
                       name="state" 
                       #expd="ngModel" 
                       [ngClass]="{ 'is-invalid': f.submitted && expd.errors }">
                       <div class="invalid-tooltip" *ngIf="f.submitted && expd.errors">
-                        <div *ngIf="expd.errors['required']">Expiration date is required</div>
+                        <div *ngIf="expd.errors['required']">Kitöltése kötelezö</div>
                       </div>
                     </div>
                     <div class="col-md-3 position-relative">
@@ -135,12 +137,12 @@
                       name="cvv" #cvv="ngModel" 
                       [ngClass]="{ 'is-invalid': f.submitted && cvv.errors }">
                       <div class="invalid-tooltip" *ngIf="f.submitted && cvv.errors">
-                        <div *ngIf="cvv.errors['required']">CVV is required</div>
+                        <div *ngIf="cvv.errors['required']">Kitöltése kötelezö</div>
                       </div>
                     </div>
                   </div>
                  <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                  Signup failed!<br/>{{ errorMessage }}
+                  A felvitel sikertelen!<br/>{{ errorMessage }}
                  </div>
               </div>
           </div>
@@ -174,7 +176,7 @@
 
 </form>
 <div class="alert alert-success" *ngIf="isSuccessful">
-  Your order is successful!
+  Megrendelése sikeres!
 </div>
 </div>
 </div>

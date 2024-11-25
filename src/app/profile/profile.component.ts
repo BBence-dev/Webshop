@@ -67,7 +67,7 @@ currentOrders: Order = {
   }
 
   loadOrders(): void {
-    this.orderService.findByNev(this.currentUser.username ).subscribe({
+    this.orderService.findByName(this.currentUser.username ).subscribe({
       next: (data) => {
         this.Orders = data;
         console.log(data);

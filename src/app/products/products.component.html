@@ -1,7 +1,7 @@
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Shop in style</h1>
+            <h1 class="display-4 fw-bolder">Vásároljon stílusosan</h1>
             <img src="/assets/termék.jpg" class="img-fluid" alt="...">
             <p class="lead fw-normal text-white-50 mb-0"></p>
             
@@ -25,7 +25,7 @@
                             <h5 class="fw-bolder"><a routerLink="/products/{{product.id}}">{{product.name}}</a></h5>
                            
                             <h6>Ár:{{product.price }}Ft</h6>
-                            <h5>Mennyiség:<input [(ngModel)]="product.amount" [ngModelOptions]="{standalone: true}" min="1" type="number" value="1"
+                            <h5>Mennyiség:<input type="number" [(ngModel)]="product.amount" [ngModelOptions]="{standalone: true}" min="1" value="1"
                             name="" class="form-control w-50" ></h5>
                            
                         </div>

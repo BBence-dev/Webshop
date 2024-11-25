@@ -38,7 +38,7 @@ export class ShoppingCartComponent implements OnInit{
 
  
    onCreateOrder() {
-    this.currentProducts.name=this.currentUser.username
+    this.currentProducts.name=this.currentUser.username;
     this.currentProducts.amount=this.totalQuantity;
     this.currentProducts.price = this.total;
     if(this.currentProducts.payment?.toLowerCase() ==="kártya"){
@@ -65,7 +65,7 @@ export class ShoppingCartComponent implements OnInit{
 
   clearAllProducts() {
     this.carts = [];
-    this.slService.clearCart(); // Clear products in the service
+    this.slService.clearCart();
   }
 
   constructor(private slService: ShoppingCartService,

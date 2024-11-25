@@ -3,34 +3,34 @@
       <a href="#" class="navbar-brand">Dohánywebshop</a>
       <ul class="navbar-nav mr-auto" routerLinkActive="active">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home">Home </a>
+          <a class="nav-link" routerLink="/home">Föoldal</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about">About </a>
+          <a class="nav-link" routerLink="/about">Rólunk</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/products">Products </a>
+          <a class="nav-link" routerLink="/products">Termékek</a>
         </li>
        <li class="nav-item">
           <form class="d-flex">
             <button class="btn btn-outline-light" type="submit" routerLink="/cart">
                 <i class="bi bi-basket-fill me-1"></i>
-                Cart
+                Kosár
                 <span class="badge bg-dark text-white ms-1 rounded-pill" >{{carts?.length}}</span>
             </button>
         </form>
         </li>
         <li class="nav-item" *ngIf="showAdminBoard">
-          <a class="nav-link" routerLink="/admin">Admin Board</a>
+          <a class="nav-link" routerLink="/admin">Admin oldal</a>
         </li>
         <li class="nav-item" *ngIf="showModeratorBoard">
-          <a class="nav-link" routerLink="/mod">Moderator Board</a>
+          <a class="nav-link" routerLink="/mod">Moderator oldal</a>
         </li>
         <li class="nav-item" *ngIf="showAdminBoard || showModeratorBoard">
-          <a class="nav-link" routerLink="/products-add">Products-add</a>
+          <a class="nav-link" routerLink="/products-add">Termék felvitel</a>
         </li>
         <li class="nav-item" *ngIf="showAdminBoard || showModeratorBoard">
-          <a class="nav-link" routerLink="/order-detail">Order-details</a>
+          <a class="nav-link" routerLink="/order-detail">Rendlés leirás</a>
         </li>
         <!--<li class="nav-item">
           <a class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
@@ -39,11 +39,11 @@
             <li class="nav-item">
               <div class="dropdown1">
                 <input type="search" class="form-control" id="searchInput" #searchInput (input)="search($event)" placeholder="Keresés">
-              <div class="dropdown-content1">
+              <!--<div class="dropdown-content1">
                 <ul *ngFor="let item of filteredData">
                   <li><a class="text-primary" routerLink="/products/{{item.id}}">{{ item.name }}</a></li>
                 </ul>
-              </div>
+              </div>-->
             </div>
             </li>
             </ul>
@@ -51,10 +51,10 @@
       
       <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/register">Sign Up</a>
+          <a class="nav-link" routerLink="/register">Regisztráció</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Login</a>
+          <a class="nav-link" routerLink="/login">Bejelentkezés</a>
         </li>
       </ul>
   
@@ -63,7 +63,7 @@
           <a class="nav-link" routerLink="/profile">{{ username }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="logout()" routerLink="/home">LogOut</a>
+          <a class="nav-link" (click)="logout()" routerLink="/home">Kijelentkezés</a>
         </li>
       </ul>
     </nav>
@@ -72,21 +72,6 @@
     <div class="container">
       <router-outlet></router-outlet>
     </div>
-  
-    <footer class="bg-dark py-4 mt-auto">
-      <div class="container px-5">
-          <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-              <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2024</div></div>
-              <div class="col-auto">
-                  <a class="link-light small" href="#!">Privacy</a>
-                  <span class="text-white mx-1">&middot;</span>
-                  <a class="link-light small" href="#!">Terms</a>
-                  <span class="text-white mx-1">&middot;</span>
-                  <a class="link-light small" href="#!">Contact</a>
-              </div>
-          </div>
-      </div>
-  </footer>
   
   </div>
   
